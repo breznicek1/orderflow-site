@@ -422,7 +422,7 @@ footer{padding:32px 6%;display:flex;align-items:center;justify-content:space-bet
   <div class="cta-glow"></div>
   <h2>Fortaleça sua própria marca.<br><span style="font-size:clamp(24px,2.8vw,42px);color:var(--text-2)">Tenha sua alternativa ao iFood.</span></h2>
   <p>Em 24 horas você começa a receber pedidos com a sua marca, sem dividir o faturamento com ninguém.</p>
-  <div class="cta-btns"><a href="#contato" class="btn-primary">Falar com especialista →</a><a href="https://wa.me/5511999999999" class="btn-ghost">💬 WhatsApp</a></div>
+  <div class="cta-btns"><a href="#contato" class="btn-primary">Falar com especialista →</a><a href="https://wa.me/5511982051205" class="btn-ghost">💬 WhatsApp</a></div>
 </div>
 <section id="contato">
   <div class="contact-inner">
@@ -431,7 +431,7 @@ footer{padding:32px 6%;display:flex;align-items:center;justify-content:space-bet
       <p>Preencha o formulário e entraremos em contato em até 2 horas úteis para agendar uma demonstração gratuita.</p>
       <div class="clinks">
         <a href="mailto:contato@orderflow.tec.br" class="clink"><div class="clink-ico">✉️</div>contato@orderflow.tec.br</a>
-        <a href="https://wa.me/5511999999999" class="clink"><div class="clink-ico">💬</div>WhatsApp</a>
+        <a href="https://wa.me/5511982051205" class="clink"><div class="clink-ico">💬</div>WhatsApp</a>
         <a href="https://orderflow.tec.br" class="clink"><div class="clink-ico">🌐</div>orderflow.tec.br</a>
       </div>
     </div>
@@ -450,11 +450,35 @@ footer{padding:32px 6%;display:flex;align-items:center;justify-content:space-bet
 <footer>
   <a class="logo" href="#"><div class="logo-icon" style="width:28px;height:28px"><svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px"><path d="M4 6h16M4 12h11M4 18h7" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><circle cx="19" cy="18" r="3.5" fill="#fff" opacity=".95"/><path d="M17.8 18l.9.9 1.8-1.8" stroke="#f4621f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span style="font-size:14px;font-weight:700;color:var(--text-4)">OrderFlow</span></a>
   <div class="footer-copy">© 2026 OrderFlow Sistemas · contato@orderflow.tec.br</div>
-  <div class="footer-links"><a href="#">Privacidade</a><a href="#">Termos</a><a href="#contato">Contato</a></div>
+  <div class="footer-links"><a href="privacidade.html">Privacidade</a><a href="termos.html">Termos</a><a href="#contato">Contato</a></div>
 </footer>
 <script>
 const surls=['foodsaas.vercel.app/madonna-pizza','foodsaas.vercel.app/gerente/madonna-pizza','foodsaas.vercel.app/gerente/madonna-pizza/analytics','foodsaas.vercel.app/gerente/madonna-pizza/ads-ia'];
 function switchTab(i){document.querySelectorAll('.stab').forEach((t,j)=>t.classList.toggle('on',i===j));document.querySelectorAll('.screen-pane').forEach((p,j)=>p.classList.toggle('on',i===j));document.getElementById('surl').textContent=surls[i];}
+
+/* ── Formulário de contato → WhatsApp ── */
+document.querySelector('.form-submit').addEventListener('click',function(e){
+  e.preventDefault();
+  var f=document.querySelector('.contact-form');
+  var inputs=f.querySelectorAll('input');
+  var selects=f.querySelectorAll('select');
+  var ta=f.querySelector('textarea');
+  var nome=inputs[0].value.trim();
+  var whats=inputs[1].value.trim();
+  var estab=inputs[2].value.trim();
+  var seg=selects[0].value;
+  var pgto=selects[1].value;
+  var msg=ta.value.trim();
+  if(!nome||!whats||!estab){alert('Por favor, preencha nome, WhatsApp e nome do estabelecimento.');return;}
+  var texto='*Novo contato — OrderFlow*\n\n'
+    +'👤 *Nome:* '+nome+'\n'
+    +'📱 *WhatsApp:* '+whats+'\n'
+    +'🏪 *Estabelecimento:* '+estab+'\n'
+    +'🍽️ *Segmento:* '+seg+'\n'
+    +'💳 *Pagamento:* '+pgto;
+  if(msg) texto+='\n\n💬 *Mensagem:*\n'+msg;
+  window.open('https://wa.me/5511982051205?text='+encodeURIComponent(texto),'_blank');
+});
 </script>
 </body>
 </html>
