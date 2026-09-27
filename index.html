@@ -166,16 +166,18 @@ section{padding:100px 6%}
 .ads-input input{flex:1;background:#f5f6f8;border:none;border-radius:20px;padding:7px 13px;font-size:11px;color:#333;outline:none}
 .ads-send{background:#f4621f;border:none;border-radius:50%;width:29px;height:29px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:13px;flex-shrink:0}
 .plans-bg{background:var(--bg-base)}
-.plans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
-.plan{background:var(--bg-1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:30px 24px;position:relative;transition:all .25s}
+.plans-grid{display:flex;justify-content:center;margin-top:56px}
+.plan{background:var(--bg-1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px 44px;position:relative;transition:all .25s;max-width:560px;width:100%}
 .plan:hover{border-color:var(--border-2);transform:translateY(-4px)}
 .plan.best{border-color:var(--orange);background:var(--bg-2)}
-.plan.best::before{content:'Mais popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:11px;font-weight:700;padding:3px 13px;border-radius:20px;white-space:nowrap}
-.plan-name{font-size:14px;font-weight:700;color:var(--text-1);margin-bottom:10px}
-.plan-price{font-family:var(--font-head);font-size:38px;font-weight:900;color:var(--orange);line-height:1}
-.plan-price sup{font-size:16px;vertical-align:top;margin-top:5px;display:inline-block}
-.plan-price span{font-size:13px;color:var(--text-4);font-family:var(--font-body);font-weight:400}
-.plan-setup{font-size:12px;color:var(--text-4);margin:7px 0 20px}
+.plan.best::before{content:'Plano único';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:11px;font-weight:700;padding:3px 13px;border-radius:20px;white-space:nowrap}
+.plan-name{font-size:16px;font-weight:700;color:var(--text-1);margin-bottom:10px}
+.plan-price{font-family:var(--font-head);font-size:48px;font-weight:900;color:var(--orange);line-height:1}
+.plan-price sup{font-size:18px;vertical-align:top;margin-top:5px;display:inline-block}
+.plan-price span{font-size:14px;color:var(--text-4);font-family:var(--font-body);font-weight:400}
+.plan-price-alt{font-size:14px;color:var(--text-3);margin-top:8px;font-weight:500}
+.plan-price-alt strong{color:var(--text-2);font-weight:700}
+.plan-setup{font-size:12px;color:var(--text-4);margin:12px 0 24px}
 .plan-line{height:1px;background:var(--border);margin-bottom:18px}
 .plan-feats{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:26px}
 .plan-feats li{font-size:13px;color:var(--text-2);display:flex;align-items:flex-start;gap:7px;line-height:1.4}
@@ -240,7 +242,7 @@ footer{padding:32px 6%;display:flex;align-items:center;justify-content:space-bet
   .hero{grid-template-columns:1fr;padding:110px 6% 60px}.hero-visual{display:none}
   .stats-bar{grid-template-columns:repeat(2,1fr)}.stat{border-bottom:1px solid var(--border)}
   .steps{grid-template-columns:1fr}.step{border-right:none;border-bottom:1px solid var(--border)}.step:last-child{border-bottom:none}
-  .showcase-grid{grid-template-columns:1fr}.plans-grid{grid-template-columns:repeat(2,1fr)}
+  .showcase-grid{grid-template-columns:1fr}.plans-grid{flex-direction:column;align-items:center}.plan{padding:30px 24px}.plan-feats{columns:1!important}
   .extras-grid{grid-template-columns:1fr}.test-grid{grid-template-columns:1fr}
   .contact-inner{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.nav-links{display:none}
 }
@@ -254,7 +256,7 @@ footer{padding:32px 6%;display:flex;align-items:center;justify-content:space-bet
   </a>
   <ul class="nav-links">
     <li><a href="#como-funciona">Como funciona</a></li><li><a href="#sistema">Sistema</a></li>
-    <li><a href="#planos">Planos</a></li><li><a href="#servicos">Serviços</a></li><li><a href="#contato">Contato</a></li>
+    <li><a href="#planos">Plano</a></li><li><a href="#servicos">Serviços</a></li><li><a href="#contato">Contato</a></li>
   </ul>
   <a href="#contato" class="nav-cta">Quero uma demo →</a>
 </nav>
@@ -290,8 +292,8 @@ footer{padding:32px 6%;display:flex;align-items:center;justify-content:space-bet
 <div class="stats-bar">
   <div class="stat"><div class="stat-n">0%</div><div class="stat-l">de comissão por pedido</div></div>
   <div class="stat"><div class="stat-n">24h</div><div class="stat-l">para entrar no ar</div></div>
-  <div class="stat"><div class="stat-n">4</div><div class="stat-l">planos para todo porte</div></div>
-  <div class="stat"><div class="stat-n">IA</div><div class="stat-l">integrada nos planos Business+</div></div>
+  <div class="stat"><div class="stat-n">1</div><div class="stat-l">plano com tudo incluso</div></div>
+  <div class="stat"><div class="stat-n">IA</div><div class="stat-l">integrada no plano</div></div>
 </div>
 <section id="como-funciona">
   <div class="sec-label">Como funciona</div>
@@ -369,14 +371,32 @@ footer{padding:32px 6%;display:flex;align-items:center;justify-content:space-bet
   </div>
 </section>
 <section class="plans-bg" id="planos">
-  <div class="sec-label">Planos</div>
-  <div class="sec-title">Escolha o plano ideal para o seu negócio.</div>
-  <div class="sec-sub">Todos os planos entram no ar em 24h. Você escolhe até onde quer crescer. Taxa de implantação única de R$ 297.</div>
+  <div class="sec-label">Plano</div>
+  <div class="sec-title">Tudo incluso. Um só plano. Sem surpresas.</div>
+  <div class="sec-sub">Todos os recursos liberados desde o primeiro dia. Seu cardápio entra no ar em até 24h.</div>
   <div class="plans-grid">
-    <div class="plan"><div class="plan-name">Essencial</div><div class="plan-price"><sup>R$</sup>97<span>/mês</span></div><div class="plan-setup">+ R$ 297 implantação única</div><div class="plan-line"></div><ul class="plan-feats"><li>Cardápio digital com sua marca</li><li>Funciona como app no celular do cliente — sem baixar nada na loja</li><li>Configuração de horários</li><li>Pedidos via WhatsApp</li><li class="off">Kanban de pedidos</li><li class="off">Analytics & relatórios</li><li class="off">Consultor IA Google Ads</li></ul><a href="#contato" class="plan-btn">Começar →</a></div>
-    <div class="plan"><div class="plan-name">Intermediário</div><div class="plan-price"><sup>R$</sup>197<span>/mês</span></div><div class="plan-setup">+ R$ 297 implantação única</div><div class="plan-line"></div><ul class="plan-feats"><li>Tudo do Essencial</li><li>Painel visual de pedidos — sua equipe vê o que chegou, o que está em preparo e o que está pronto</li><li>Avaliações dos clientes</li><li>Notificações WhatsApp automáticas</li><li class="off">Analytics & relatórios</li><li class="off">Consultor IA Google Ads</li></ul><a href="#contato" class="plan-btn">Começar →</a></div>
-    <div class="plan best"><div class="plan-name">Business</div><div class="plan-price"><sup>R$</sup>347<span>/mês</span></div><div class="plan-setup">+ R$ 297 implantação única</div><div class="plan-line"></div><ul class="plan-feats"><li>Tudo do Intermediário</li><li>Análise gerencial completa</li><li>IA que sugere promoções e ajuda a vender mais</li><li>Baixe o relatório completo do seu faturamento em planilha</li><li>Saiba quem são seus clientes, com que frequência pedem e quanto gastam</li><li>Traga clientes de volta com promoções pelo WhatsApp</li></ul><a href="#contato" class="plan-btn">Começar →</a></div>
-    <div class="plan"><div class="plan-name">Premium</div><div class="plan-price"><sup>R$</sup>547<span>/mês</span></div><div class="plan-setup">+ R$ 297 implantação única</div><div class="plan-line"></div><ul class="plan-feats"><li>Tudo do Business</li><li>IA ilimitada para crescer sem parar</li><li>Consultoria mensal inclusa</li><li>Conectamos com as ferramentas que você já usa no negócio</li><li>Prioridade no suporte</li></ul><a href="#contato" class="plan-btn">Começar →</a></div>
+    <div class="plan best">
+      <div class="plan-name">Plano Completo</div>
+      <div class="plan-price"><sup>R$</sup>129<sup style="font-size:22px">,90</sup><span>/mês</span></div>
+      <div class="plan-price-alt">no cartão de crédito · ou <strong>R$ 149,90</strong>/mês no boleto</div>
+      <div class="plan-setup">+ R$ 297 implantação única</div>
+      <div class="plan-line"></div>
+      <ul class="plan-feats" style="columns:2;column-gap:24px">
+        <li>Cardápio digital com sua marca</li>
+        <li>Funciona como app no celular</li>
+        <li>Configuração de horários</li>
+        <li>Pedidos via WhatsApp</li>
+        <li>Kanban de pedidos em tempo real</li>
+        <li>Avaliações dos clientes</li>
+        <li>Notificações WhatsApp automáticas</li>
+        <li>Analytics & relatórios completos</li>
+        <li>Export de faturamento em planilha</li>
+        <li>Gestão da base de clientes</li>
+        <li>Campanhas de fidelização</li>
+        <li>Consultor IA Google Ads</li>
+      </ul>
+      <a href="#contato" class="plan-btn">Começar agora →</a>
+    </div>
   </div>
 </section>
 <section class="extras-bg" id="servicos">
@@ -420,7 +440,7 @@ footer{padding:32px 6%;display:flex;align-items:center;justify-content:space-bet
       <div class="fg"><label>Nome do estabelecimento</label><input type="text" placeholder="Ex: Pizzaria Madonna"></div>
       <div class="form-row">
         <div class="fg"><label>Segmento</label><select><option>Pizzaria</option><option>Hamburgueria</option><option>Restaurante</option><option>Açaí / Sorvetes</option><option>Lanchonete</option><option>Outro</option></select></div>
-        <div class="fg"><label>Plano de interesse</label><select><option>Essencial — R$ 97/mês</option><option>Intermediário — R$ 197/mês</option><option>Business — R$ 347/mês</option><option>Premium — R$ 547/mês</option><option>Não sei ainda</option></select></div>
+        <div class="fg"><label>Forma de pagamento</label><select><option>Cartão de crédito — R$ 129,90/mês</option><option>Boleto — R$ 149,90/mês</option></select></div>
       </div>
       <div class="fg"><label>Mensagem (opcional)</label><textarea rows="3" placeholder="Conta mais sobre o seu negócio..."></textarea></div>
       <button class="form-submit">Quero uma demonstração →</button>
