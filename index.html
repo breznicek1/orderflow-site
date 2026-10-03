@@ -146,9 +146,16 @@ section{padding:96px 0}
 @media(max-width:900px){.panel-grid{grid-template-columns:1fr}}
 
 /* vídeo */
-.video{background:var(--ink);color:#fff}
-.video-box{margin-top:36px;border-radius:20px;overflow:hidden;background:#000;aspect-ratio:16/9}
-.video-box video{width:100%;height:100%;display:block}
+.video{background:var(--ink);color:#fff;overflow:hidden}
+.video .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:64px;align-items:center}
+.video .lead{color:#CBC3C5}
+.video ul{margin:26px 0 30px;padding:0;list-style:none;display:grid;gap:12px;font-size:16.5px;color:#E9E3E4}
+.video li{display:flex;gap:12px;align-items:baseline}
+.video li::before{content:"";flex:0 0 8px;height:8px;border-radius:50%;background:var(--orange);transform:translateY(-2px)}
+.video-box{position:relative;width:330px;aspect-ratio:9/16;border-radius:30px;overflow:hidden;background:#000;box-shadow:0 0 0 8px #2E2829,0 40px 90px -30px rgba(242,101,34,.45)}
+.video-box video{width:100%;height:100%;object-fit:cover;display:block}
+.vsound{position:absolute;right:12px;bottom:12px;display:flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:0;border-radius:999px;background:rgba(20,16,17,.72);color:#fff;font:600 14px/1 var(--body);cursor:pointer;backdrop-filter:blur(6px)}
+@media(max-width:900px){.video .wrap{grid-template-columns:1fr;gap:36px}.video-box{width:min(320px,100%);margin:0 auto}}
 
 /* preço */
 .price-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;margin-top:44px;align-items:start}
@@ -359,11 +366,23 @@ footer a{text-decoration:none;color:#CBC3C5}
   </div>
 </section>
 
-<!-- Vídeo: aparece quando o arquivo existir em assets/video/orderflow.mp4 -->
-<section class="video" id="video" hidden>
+<section class="video" id="video">
   <div class="wrap">
-    <h2>Veja em um minuto</h2>
-    <div class="video-box"><video controls preload="none" playsinline poster="assets/img/ger-pedidos.webp"><source src="assets/video/orderflow.mp4" type="video/mp4"></video></div>
+    <div>
+      <h2>O OrderFlow em 30 segundos</h2>
+      <p class="lead">Do cliente abrindo o cardápio até o pedido chegar no painel, com o PIX confirmado no caminho.</p>
+      <ul>
+        <li>Cardápio online com a sua marca</li>
+        <li>PIX com confirmação automática</li>
+        <li>Todos os pedidos num painel só</li>
+        <li>Relatórios, avaliações e assistente com IA</li>
+      </ul>
+      <a class="btn btn-main" href="#contato">Quero uma demonstração</a>
+    </div>
+    <div class="video-box">
+      <video id="vid" muted loop playsinline preload="metadata" poster="assets/video/orderflow-poster.webp" aria-label="Vídeo de apresentação do OrderFlow"><source src="assets/video/orderflow.mp4" type="video/mp4"></video>
+      <button class="vsound" id="vsound" type="button" aria-pressed="false">Ativar som</button>
+    </div>
   </div>
 </section>
 
@@ -519,10 +538,18 @@ function closeMenu(){document.getElementById('mnav').classList.remove('open');do
   else tabs.forEach(function(x){x.querySelector('.bar').style.display='none'});
 })();
 
-/* Vídeo: só aparece se o arquivo existir */
+/* Vídeo: toca sem som quando aparece na tela, pausa quando sai */
 (function(){
-  var v=document.querySelector('#video video'); if(!v) return;
-  fetch(v.querySelector('source').src,{method:'HEAD'}).then(function(r){if(r.ok)document.getElementById('video').hidden=false}).catch(function(){});
+  var v=document.getElementById('vid'), b=document.getElementById('vsound'); if(!v) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){v.controls=true;b.hidden=true;return}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){v.controls=true})}else v.pause()})},{threshold:.4}).observe(v);
+  } else v.controls=true;
+  b.addEventListener('click',function(){
+    v.muted=!v.muted; if(!v.muted){v.currentTime=0;v.play()}
+    b.textContent=v.muted?'Ativar som':'Desativar som'; b.setAttribute('aria-pressed',String(!v.muted));
+  });
 })();
 
 /* Calculadora */
